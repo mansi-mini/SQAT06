@@ -12,6 +12,12 @@ class CustomWorld {
   goToWebsite() {
     return this.browser.init().url('https://duckduckgo.com/');
   }
+
+  randomUsers() {
+    return Math.random().toString(36).substring(7);
+  }
 }
 
+
 setWorldConstructor(CustomWorld)
+

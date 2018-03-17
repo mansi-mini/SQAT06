@@ -17,3 +17,4 @@ Feature: Simple maths
     Given I go to Figure1Passwords
     When I enter invalidcharacters
     Then I should see the characters error
+

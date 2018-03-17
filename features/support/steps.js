@@ -12,11 +12,13 @@ const should = chai.should()
       })
   })
   
+  var randomUserId = Math.random().toString(36).substring(7);
   When('I enter SignupDetails', function(callback) {
+    
     this.browser
       .waitForVisible('.register-page__username-input')
-      .setValue('.register-page__username-input','mansi_sqat_20')
-      .setValue('.register-page__email-input','figure1.xyz20@gmail.com')
+      .setValue('.register-page__username-input',randomUserId)
+      .setValue('.register-page__email-input',randomUserId +'@gmail.com')
       .setValue('.register-page__password-input','Sqat06')
       .setValue('.register-page__confirm-password-input','Sqat06')
       .addValue('.register-page__specialties-list',' Student')
@@ -33,9 +35,9 @@ const should = chai.should()
      })
     
      Then('I should see the ConfirmAccountPage', function(callback) {
-      this.browser.waitForVisible('.email-confirmation-intro',3000)    
+      this.browser.waitForVisible('.email-confirmation-intro',6000)    
       .$('#ember556').getText('div').getText('h2').then(function(result){
-        result.should.equal("Confirm your account, mansi_sqat_20");
+        result.should.equal("Confirm your account, " + randomUserId);
         callback();
       }).catch(function(error){
       callback(error);
@@ -54,7 +56,7 @@ const should = chai.should()
 
 When('I enter username', function(callback) {
   this.browser
-    .waitForVisible('.register-page__username-input')
+    .waitForVisible('.register-page__username-input', 3000)
     .setValue('.register-page__username-input','mansi_sqat')
     .setValue('.register-page__email-input','mansi.mini@gmail.com')
     .setValue('.register-page__password-input','Sqat06')
@@ -122,3 +124,5 @@ When('I enter username', function(callback) {
     })
   
   })
+
+  
